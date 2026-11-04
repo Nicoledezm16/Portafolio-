@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Logo } from "./Logo";
+import { Logo } from "./logo";
 import { useLang, type Lang } from "@/lib/i18n/LanguageProvider";
 
 const links = [["home", "#home"], ["about", "#about"], ["projects", "#projects"], ["contact", "#contact"]] as const;
@@ -27,7 +27,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/70 backdrop-blur-xl">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded focus:bg-accent focus:px-3 focus:py-2">{t.nav.skip}</a>
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href="#home" aria-label="Nicolas Ledezma — home"><Logo /></a>
+        <a href="#home" aria-label="Nicolas Ledezma — home"><logo /></a>
         <ul className="hidden items-center gap-7 text-sm text-mute md:flex">
           {links.map(([k, href]) => (<li key={k}><a href={href} className="transition hover:text-ink">{t.nav[k]}</a></li>))}
         </ul>
