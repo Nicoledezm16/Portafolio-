@@ -1,6 +1,6 @@
 export const site = {
   name: "Nicolas Ledezma",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portafolio-seven-rust-89.vercel.app",
   // Pega aquí tus URLs. Las vacías no se muestran.
   socials: [
     { id: "github", label: "GitHub", href: "https://github.com/Nicolasledezma" },
