@@ -1,5 +1,5 @@
 "use client";
-import { Logo } from "./Logo";
+import { Logo } from "./logo";
 import { SocialLinks } from "./SocialLinks";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
@@ -16,7 +16,7 @@ export function Footer() {
     <footer className="border-t border-line bg-bg2 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center">
         <div className="space-y-3">
-          <Logo />
+          <Logo/>
           <p className="text-sm text-mute">{t.footer.built}</p>
         </div>
         <nav aria-label="Footer">
