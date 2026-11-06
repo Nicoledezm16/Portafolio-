@@ -220,7 +220,7 @@ export function PortraitTilt({ src, alt }: { src: string; alt: string }) {
             <path d="M4 2l16 8-7 2-2 7L4 2z" fill="#A855F7" stroke="#050507" strokeWidth="1.5" strokeLinejoin="round" />
           </svg>
           <span className="mt-3 whitespace-nowrap rounded-md bg-accent px-2 py-0.5 text-xs font-medium text-ink shadow-glow">
-            {showCode ? "Developer" : "Frontend"}
+            {showCode ? "Backend" : "Frontend"}
           </span>
         </motion.div>
       </motion.div>

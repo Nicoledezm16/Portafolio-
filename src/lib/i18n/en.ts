@@ -1,13 +1,13 @@
 export const en = {
   nav: { home: "Home", about: "About", projects: "Projects", blog: "Blog", contact: "Contact", talk: "Let's talk", menu: "Open menu", close: "Close menu", skip: "Skip to content" },
   hero: {
-    badge: "Frontend Developer", title: "Hi, I'm Nicolas Ledezma.", subtitle: "Frontend Developer & UI/UX Enthusiast.",
+    badge: "Frontend Developer", title: "Hi, I'm Nicolas Ledezma.", subtitle: "Frontend Developer - Product Designer.",
     description: "I build modern, responsive and user-focused digital experiences, combining clean code with thoughtful design.",
     cta1: "View My Projects", cta2: "Contact Me", tagline: ["Code.", "Design.", "Innovate."], portraitAlt: "Portrait of Nicolas Ledezma",
   },
   about: {
     title: "Turning ideas into digital products.",
-    description: "I'm a frontend developer and product designer. I build responsive interfaces with React and TypeScript, and I design and prototype them in Figma. I've collaborated on digital projects, mentored students in programming and shared what I learn with tech communities.",
+    description: "I’m a frontend developer and product designer. I design interfaces in Figma and build them with React, TypeScript and Next.js, so details don’t get lost between prototype and production. I’ve built a CRM SaaS, a fintech interface for a hackathon and a Web3 savings platform, mentored students in programming, and I’m currently learning Solidity and smart contracts.",
     interests: ["Frontend Development", "Product Design (UI/UX)", "Web3 & Blockchain", "Programming mentoring"],
   },
   tech: {

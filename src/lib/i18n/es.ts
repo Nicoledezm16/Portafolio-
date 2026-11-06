@@ -2,13 +2,13 @@ import type { Dictionary } from "./en";
 export const es: Dictionary = {
   nav: { home: "Inicio", about: "Sobre mí", projects: "Proyectos", blog: "Blog", contact: "Contacto", talk: "Hablemos", menu: "Abrir menú", close: "Cerrar menú", skip: "Saltar al contenido" },
   hero: {
-    badge: "Desarrollador Frontend", title: "Hola, soy Nicolas Ledezma.", subtitle: "Desarrollador Frontend y entusiasta de UI/UX.",
+    badge: "Desarrollador Frontend", title: "Hola, soy Nicolas Ledezma.", subtitle: "Frontend Developer - Product Designer",
     description: "Desarrollo experiencias digitales modernas, responsivas y centradas en el usuario, combinando código limpio con diseño intuitivo.",
     cta1: "Ver mis proyectos", cta2: "Contáctame", tagline: ["Código.", "Diseño.", "Innovación."], portraitAlt: "Retrato de Nicolas Ledezma",
   },
   about: {
     title: "Convirtiendo ideas en productos digitales.",
-    description: "Soy desarrollador frontend y diseñador de producto. Construyo interfaces responsivas con React y TypeScript, y las diseño y prototipo en Figma. He colaborado en proyectos digitales, he sido mentor de programación y comparto lo que aprendo con comunidades tecnológicas.",
+    description: "Soy desarrollador frontend y diseñador de producto. Diseño interfaces en Figma y las construyo con React, TypeScript y Next.js, para que ningún detalle se pierda entre el prototipo y la producción. He creado un CRM SaaS, una interfaz fintech para un hackathon y una plataforma de ahorro Web3, he mentoreado a estudiantes en programación y actualmente estoy aprendiendo Solidity y contratos inteligentes",
     interests: ["Desarrollo Frontend", "Diseño de producto (UI/UX)", "Web3 y Blockchain", "Mentoría de programación"],
   },
   tech: {

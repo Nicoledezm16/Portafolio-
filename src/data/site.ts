@@ -3,7 +3,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portafolio-seven-rust-89.vercel.app",
   // Pega aquí tus URLs. Las vacías no se muestran.
   socials: [
-    { id: "github", label: "GitHub", href: "https://github.com/Nicolasledezma" },
+    { id: "github", label: "GitHub", href: "https://github.com/Nicoledezm16" },
     { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/nicolasledezma/" },
     { id: "instagram", label: "Instagram", href: "https://www.instagram.com/nicolas.ledzz/" },
     { id: "x", label: "X", href: "" },
