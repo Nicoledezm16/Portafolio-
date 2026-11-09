@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import { site } from "@/data/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const font = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
@@ -33,13 +34,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export const viewport: Viewport = { themeColor: "#050507" };
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={font.variable}>
       <body className="font-sans">
         <LanguageProvider>{children}</LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
