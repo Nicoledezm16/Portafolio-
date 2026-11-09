@@ -1,58 +1,64 @@
-import { Code2, Palette, Wrench, Compass, type LucideIcon } from "lucide-react";
+import {
+  SiHtml5, SiCss, SiJavascript, SiTypescript, SiReact, SiVite, SiNextdotjs,
+  SiFigma, SiTailwindcss, SiNodedotjs, SiSupabase, SiDocker, SiGit, SiEthereum,
+  SiSolidity,SiFramer,SiVercel
+} from "react-icons/si";
+import {
+  Code2, Palette, Wrench, Compass, PenTool, LayoutGrid, Plug, Wallet, FileCode2, Layers,
+} from "lucide-react";
+import type { IconType } from "react-icons";
+import type { LucideIcon } from "lucide-react";
 
-export type TechItem = { name: string; status: "using" | "exploring" };
-export type TechGroup = {
-  id: "frontend" | "styling" | "tools" | "interests";
-  icon: LucideIcon;
-  items: TechItem[];
-};
+export type Skill = { name: string; icon: IconType | LucideIcon; color: string };
 
-// "using" = lo usas; "exploring" = lo estás aprendiendo.
-// Next.js y Tailwind no están en tu CV: bórralos si no los usas.
-export const techGroups: TechGroup[] = [
+export const categories = [
   {
-    id: "frontend",
+    title: "Frontend",
     icon: Code2,
-    items: [
-      { name: "HTML5", status: "using" },
-      { name: "CSS", status: "using" },
-      { name: "JavaScript", status: "using" },
-      { name: "TypeScript", status: "using" },
-      { name: "React", status: "using" },
-      { name: "Vite", status: "using" },
-      { name: "Next.js", status: "using" },
+    skills: [
+      { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+      { name: "CSS", icon: SiCss, color: "#1572B6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Vite", icon: SiVite, color: "#A78BFA" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+      { name: "Framer Motion", icon: SiFramer, color: "#E879F9" },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
     ],
   },
   {
-    id: "styling",
+    title: "Styling & design",
     icon: Palette,
-    items: [
-      { name: "Figma", status: "using" },
-      { name: "Prototyping", status: "using" },
-      { name: "Design Systems", status: "using" },
-      { name: "Tailwind CSS", status: "using" },
+    skills: [
+      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+      { name: "Prototyping", icon: PenTool, color: "#A78BFA" },
+      { name: "Design Systems", icon: LayoutGrid, color: "#C4B5FD" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
     ],
   },
   {
-    id: "tools",
+    title: "Tools & backend",
     icon: Wrench,
-    items: [
-      { name: "Node.js", status: "using" },
-      { name: "Supabase", status: "using" },
-      { name: "REST APIs", status: "using" },
-      { name: "Docker", status: "using" },
-      { name: "Git & GitHub", status: "using" },
+    skills: [
+      { name: "Node.js", icon: SiNodedotjs, color: "#68A063" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+      { name: "REST APIs", icon: Plug, color: "#A78BFA" },
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Git & GitHub", icon: SiGit, color: "#F05032" },
     ],
   },
   {
-    id: "interests",
+    title: "Web3",
     icon: Compass,
-    items: [
-      { name: "Web3", status: "using" },
-      { name: "Wallet integration", status: "using" },
-      { name: "Solidity", status: "exploring" },
-      { name: "Smart Contracts", status: "exploring" },
-      { name: "Base", status: "exploring" },
+    skills: [
+      { name: "Web3", icon: SiEthereum, color: "#8C8CFF" },
+      { name: "Wallet integration", icon: Wallet, color: "#A78BFA" },
+    ],
+    exploring: [
+      { name: "Solidity", icon: SiSolidity, color: "#7DD3FC" },
+      { name: "Smart Contracts", icon: FileCode2, color: "#22D3EE" },
+      { name: "Base", icon: Layers, color: "#0052FF" },
     ],
   },
 ];

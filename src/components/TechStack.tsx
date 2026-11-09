@@ -1,74 +1,103 @@
 "use client";
 import { motion } from "framer-motion";
-import { useLang } from "@/lib/i18n/LanguageProvider";
-import { techGroups } from "@/data/tech";
-import { Section } from "./Section";
-import { Reveal } from "./Reveal";
+import { categories, type Skill } from "@/data/tech";
 
-const chip =
-  "rounded-lg border border-accent2/20 bg-gradient-to-b from-accent/15 to-accent/5 px-3 py-1.5 text-sm text-ink/90 transition-all duration-200 hover:border-accent2/60 hover:from-accent/25 hover:to-accent/10 hover:text-ink hover:shadow-[0_0_18px_rgb(var(--accent)/0.3)]";
-const chipExploring =
-  "rounded-lg border border-dashed border-hi/50 px-3 py-1.5 text-sm text-hi transition-all duration-200 hover:border-hi hover:bg-hi/10 hover:shadow-[0_0_18px_rgb(var(--hi)/0.25)]";
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.04 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 8, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3 } },
+};
 
-export function TechStack() {
-  const { t } = useLang();
-
+function Chip({ skill, dashed = false }: { skill: Skill; dashed?: boolean }) {
+  const Icon = skill.icon;
   return (
-    <Section id="tech" title={t.tech.title} className="bg-bg2">
-      <div className="grid gap-6 md:grid-cols-2">
-        {techGroups.map((g, gi) => {
-          const using = g.items.filter((i) => i.status === "using");
-          const exploring = g.items.filter((i) => i.status === "exploring");
-          const Icon = g.icon;
-          const headingId = `tech-${g.id}`;
+    <motion.li
+      variants={item}
+      whileHover={{ y: -3 }}
+      style={{ "--c": skill.color } as React.CSSProperties}
+      className={`group relative flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm
+        transition-all duration-300 cursor-default
+        ${dashed
+          ? "border-dashed border-cyan-400/40 bg-cyan-400/5 text-cyan-300"
+          : "border-white/10 bg-white/[0.03] text-zinc-200"}
+        hover:border-[var(--c)]/60 hover:bg-[var(--c)]/10
+        hover:shadow-[0_0_20px_-4px_var(--c)]`}
+    >
+      <Icon
+        size={16}
+        className="shrink-0 transition-transform duration-300 group-hover:scale-110"
+        style={{ color: skill.color }}
+      />
+      {skill.name}
+    </motion.li>
+  );
+}
 
+  export function TechStack() {
+  return (
+    <section className="mx-auto max-w-5xl px-6 py-20">
+      <div className="grid gap-5 md:grid-cols-2">
+        {categories.map((cat, i) => {
+          const CatIcon = cat.icon;
           return (
-            <Reveal key={g.id} delay={gi * 0.06} className="h-full">
-              <section
-                aria-labelledby={headingId}
-                className="group relative h-full overflow-hidden rounded-2xl border border-line bg-card p-6 transition-shadow hover:shadow-glow"
-              >
-                <div
-                  aria-hidden
-                  className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent2/60 to-transparent"
-                />
+            <motion.div
+              key={cat.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="relative overflow-hidden rounded-2xl border border-white/10
+                bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-6 backdrop-blur
+                transition-colors duration-300 hover:border-violet-400/40"
+            >
+              {/* línea de luz superior */}
+              <div className="pointer-events-none absolute inset-x-8 top-0 h-px
+                bg-gradient-to-r from-transparent via-violet-400/60 to-transparent" />
+              {/* glow de fondo */}
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40
+                rounded-full bg-violet-500/10 blur-3xl" />
 
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg border border-line bg-accent/10 text-accent2">
-                    <Icon size={20} aria-hidden />
-                  </span>
-                  <h3 id={headingId} className="text-lg font-semibold">
-                    {t.tech.groups[g.id]}
-                  </h3>
+              <div className="mb-5 flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl
+                  border border-violet-400/30 bg-violet-500/15 text-violet-300">
+                  <CatIcon size={18} />
                 </div>
+                <h3 className="text-lg font-semibold text-white">{cat.title}</h3>
+              </div>
 
-                <ul className="flex flex-wrap gap-2">
-                  {using.map((it) => (
-                    <motion.li key={it.name} whileHover={{ y: -2 }} className={chip}>
-                      {it.name}
-                    </motion.li>
-                  ))}
-                </ul>
+              <motion.ul
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="flex flex-wrap gap-2"
+              >
+                {cat.skills.map((s) => <Chip key={s.name} skill={s} />)}
+              </motion.ul>
 
-                {exploring.length > 0 && (
-                  <div className="mt-5 border-t border-line pt-4">
-                    <p className="mb-3 text-xs font-medium uppercase tracking-wider text-mute">
-                      {t.tech.exploring}
-                    </p>
-                    <ul className="flex flex-wrap gap-2">
-                      {exploring.map((it) => (
-                        <motion.li key={it.name} whileHover={{ y: -2 }} className={chipExploring}>
-                          {it.name}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </section>
-            </Reveal>
+              {cat.exploring && (
+                <div className="mt-5 border-t border-white/10 pt-4">
+                  <p className="mb-3 text-[11px] font-medium uppercase tracking-widest text-zinc-500">
+                    Exploring
+                  </p>
+                  <motion.ul
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="flex flex-wrap gap-2"
+                  >
+                    {cat.exploring.map((s) => <Chip key={s.name} skill={s} dashed />)}
+                  </motion.ul>
+                </div>
+              )}
+            </motion.div>
           );
         })}
       </div>
-    </Section>
+    </section>
   );
 }

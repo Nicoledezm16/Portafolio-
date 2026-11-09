@@ -2,7 +2,12 @@
   "name": "nicolas-ledezma-portfolio",
   "version": "1.0.0",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "start": "next start", "lint": "next lint" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "framer-motion": "^11.11.0",
@@ -11,6 +16,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
+    "react-icons": "^5.7.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

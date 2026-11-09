@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { useLang, type Lang } from "@/lib/i18n/LanguageProvider";
@@ -20,6 +21,39 @@ function LangSwitch() {
   );
 }
 
+function DesktopLinks() {
+  const { t } = useLang();
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  return (
+    <ul
+      className="hidden items-center gap-1 text-sm md:flex"
+      onMouseLeave={() => setHovered(null)}
+    >
+      {links.map(([k, href]) => (
+        <li key={k}>
+          <a
+            href={href}
+            onMouseEnter={() => setHovered(k)}
+            onFocus={() => setHovered(k)}
+            onBlur={() => setHovered(null)}
+            className="relative block rounded-lg px-4 py-2 text-mute transition-colors duration-300 hover:text-ink focus-visible:text-ink"
+          >
+            {hovered === k && (
+              <motion.span
+                layoutId="nav-pill"
+                className="absolute inset-0 z-0 rounded-lg bg-accent/15 ring-1 ring-accent/30"
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">{t.nav[k]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function Navbar() {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
@@ -27,10 +61,8 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/70 backdrop-blur-xl">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded focus:bg-accent focus:px-3 focus:py-2">{t.nav.skip}</a>
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href="#home" aria-label="Nicolas Ledezma — home">< Logo /></a>
-        <ul className="hidden items-center gap-7 text-sm text-mute md:flex">
-          {links.map(([k, href]) => (<li key={k}><a href={href} className="transition hover:text-ink">{t.nav[k]}</a></li>))}
-        </ul>
+        <a href="#home" aria-label="Nicolas Ledezma — home"><Logo /></a>
+        <DesktopLinks />
         <div className="flex items-center gap-3">
           <LangSwitch />
           <button className="grid h-11 w-11 place-items-center rounded-lg border border-line md:hidden" aria-expanded={open} aria-controls="mobile-menu"
